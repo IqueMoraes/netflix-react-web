@@ -1,7 +1,9 @@
+import Login from "./screens/login/login.screen";
+
 function App() {
   return (
     <>
-      <h1>Netflix react web </h1>
+      <Login />
     </>
   );
 }
