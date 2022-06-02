@@ -3,27 +3,15 @@ import { Grid } from "@mui/material";
 
 export const Wrapper = styled(Grid)`
   min-height: 100vh;
-  background-color: #1a1a1a;
-`;
-export const Input = styled.input`
-  width: 100%;
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #e0e0e0;
-  margin: 0 0 22px;
+  background-color: #141414;
 `;
 
-export const Button = styled.button`
-  background-color: #e31a13;
-  color: #fff;
-  width: 100%;
-  padding: 9px;
-  border-radius: 5px;
-  border: 0;
-  margin: 0 0 22px;
-`;
+export const Image = styled.div`
+  height: 100vh;
+  width: 100vw;
+  positin: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 
-export const Error = styled.p`
-  color: #e31a13;
-  
 `
