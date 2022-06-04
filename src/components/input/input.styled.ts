@@ -1,20 +1,19 @@
 import styled from "styled-components";
 
 export const InputStyled = styled.input`
-width: 100%;
-padding: 8px;
-border-radius: 5px;
-border: 1px solid #e0e0e0;
-margin: 0 0 22px;
-box-sizing: border-box;
-&:hover,
-&:focus {
-  background-color: ${props => props.theme.palette.core.lightGray};
-  border: 0;
-  outline: none;
+  width: ${props => props.theme.layout.horizontalLength.full};
+  border-radius: ${props => props.theme.layout.border.xSmall};
   padding: 9px;
-}
-& input + input {
-  background-color: gray;
-}
+  border: 1px solid ${props => props.theme.palette.core.lightGray};
+  box-sizing: border-box;
+  &:hover { filter: brightness(70%) };
+  &:focus {
+    background-color: ${props => props.theme.palette.core.lightGray};
+    border: 0;
+    outline: none;
+    padding: 10px;
+  }
+  + input {
+    margin-top: 22px;
+  }
 `;
