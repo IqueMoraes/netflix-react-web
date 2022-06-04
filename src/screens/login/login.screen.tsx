@@ -40,18 +40,19 @@ function Form() {
   return (
     <Wrapper container justifyContent="center" alignContent="center">
       <Grid item xs={2}>
+        <h1 style={{color: `red`}}>NETFLIX</h1>
         <Input
           type="email"
           name="email"
           placeholder="E-mail"
           onChange={handleChange}
-        />
+          />
         <Input
           type="password"
           name="password"
           placeholder="Senha"
           onChange={handleChange}
-        />
+          />
         <Button onClick={handleSend}>Entrar</Button>
         <FormError message={error} />
       </Grid>

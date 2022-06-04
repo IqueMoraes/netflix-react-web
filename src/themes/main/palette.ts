@@ -7,16 +7,8 @@ const core = {
 };
 
 const typography = {
-  main: {
-    color: core.darkGray,
-    // fontFamily: 'HelveticaNeue'
-  },
-  onRed: {
-    color: core.contrast,
-    // fontFamily: 'HelveticaNeue',
-    weight: 'regular',
-     
-  }
+  main: core.contrast,
+  onWhite: core.darkGray,
 };
 
 export const palette ={

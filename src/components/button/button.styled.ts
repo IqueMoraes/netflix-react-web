@@ -1,14 +1,18 @@
 import styled from "styled-components";
 
-export const ButtonStyled = styled.button`
-  background-color: ${(props) => props.theme.palette.core.primary};
-  color: ${(props) => props.theme.palette.core.contrast};
-  width: 100%;
-  padding: 9px;
-  border-radius: 5px;
+export const ButtonStyled = styled.button` 
+${ props => {
+  const { theme: {palette, layout }} = props;
+  const {core} = palette;
+
+  return `
+  background-color: ${core.primary};
+  color: ${core.contrast};
+  width: ${layout.horizontalLength.full};
+  padding: 8px;
+  border-radius: ${layout.border.xSmall};
   border: 0;
-  margin: 0 0 22px;
-  &:hover {
-    background-color: #c00f09;
-  }
+  margin: ${layout.margin.groupInnerGap} 0 0;
+  `
+}}
 `;
