@@ -40,7 +40,7 @@ function Form() {
   return (
     <Wrapper container justifyContent="center" alignContent="center">
       <Grid item xs={2}>
-        <h1 style={{color: `red`}}>NETFLIX</h1>
+        <h1 style={{color: `red`, textAlign: 'center'}}>NETFLIX</h1>
         <Input
           type="email"
           name="email"
