@@ -8,7 +8,7 @@ ${ props => {
   return `
   background-color: ${core.primary};
   color: ${core.contrast};
-  width: ${layout.horizontalLength.full};
+  width: 100%;
   padding: 8px;
   border-radius: ${layout.border.xSmall};
   border: 0;
