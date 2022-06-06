@@ -13,6 +13,7 @@ ${ props => {
   border-radius: ${layout.border.xSmall};
   border: 0;
   margin: ${layout.margin.groupInnerGap} 0 0;
+  font-family: 'Open Sans', sans-serif;
   `
 }}
 `;

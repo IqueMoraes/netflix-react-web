@@ -13,6 +13,7 @@ export const InputStyled = styled.input`
       padding: 9px;
       border: 1px solid ${palette.core.lightGray};
       box-sizing: border-box;
+      font-family: 'Open Sans', sans-serif;
 
       &:hover {
         filter: brightness(70%);
