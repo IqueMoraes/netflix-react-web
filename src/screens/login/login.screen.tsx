@@ -31,6 +31,8 @@ function Form() {
       // await loginSchema.validate(data, {stripUnknown: true, abortEarly: false});
       // await loginSchema.isValid(data, {abortEarly:false})
       console.log("Login validated");
+      // setAuth(true);
+
     } catch (e: any) {
       console.log(e);
       setError(e.message);
