@@ -16,7 +16,7 @@ export const InputStyled = styled.input`
       font-family: 'Open Sans', sans-serif;
 
       &:hover {
-        filter: brightness(70%);
+        filter: brightness(85%);
       }
 
       &:focus {
