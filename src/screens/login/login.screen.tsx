@@ -1,11 +1,14 @@
+import { useCallback, useEffect, useState } from "react";
 import { Grid } from "@mui/material";
-import { useCallback, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Button from "../../components/button/button";
 import FormError from "../../components/form-error/form-error";
 import Input from "../../components/input/input";
+import { authenticated } from "../../store/user/user.selector";
 import { loginSchema } from "./login.schema";
 import { Wrapper } from "./login.styled";
 import { ILoginData } from "./login.types";
+import userSlice from "../../store/user/user.slice";
 
 function Form() {
   const [data, setData] = useState<ILoginData>({
@@ -13,6 +16,9 @@ function Form() {
     password: "",
   });
   const [error, setError] = useState<String>("");
+
+  const dispatch = useDispatch()
+  const userAuthenticated = useSelector(authenticated);
 
   const handleChange = useCallback(
     ({ target }: any) => {
@@ -29,15 +35,18 @@ function Form() {
     try {
       await loginSchema.validate(data);
       // await loginSchema.validate(data, {stripUnknown: true, abortEarly: false});
-      // await loginSchema.isValid(data, {abortEarly:false})
-      console.log("Login validated");
-      // setAuth(true);
 
+      dispatch(userSlice.actions.authenticated(true));
+      
     } catch (e: any) {
       console.log(e);
       setError(e.message);
     }
   }, [data]);
+
+  useEffect(() => {
+    console.log(userAuthenticated);
+  }, [userAuthenticated]);
 
   return (
     <Wrapper container justifyContent="center" alignContent="center">
