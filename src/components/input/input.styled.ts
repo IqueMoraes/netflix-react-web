@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const InputStyled = styled.input`
   ${(props) => {
@@ -6,7 +6,7 @@ export const InputStyled = styled.input`
       theme: { layout, palette },
     } = props;
 
-    //retornando erro com css` 
+    // retornando erro com css`
     return `
       width: 100%;
       border-radius: ${layout.border.xSmall};

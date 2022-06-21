@@ -1,4 +1,4 @@
-const LOGIN_URL = "/login";
+const LOGIN_URL = '/login';
 
 interface ILoginData {
   email: string;
