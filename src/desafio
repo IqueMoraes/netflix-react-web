@@ -23,5 +23,3 @@ const movies: Movie[] = [
         classificacao: 5
     }
 ];
-
-function 

@@ -11,7 +11,7 @@ const typography = {
   onWhite: core.darkGray,
 };
 
-export const palette ={
+export const palette = {
   core,
-  typography
+  typography,
 };

@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ButtonStyled = styled.button` 
-${ props => {
-  const { theme: {palette, layout }} = props;
-  const {core} = palette;
+${(props) => {
+    const { theme: { palette, layout } } = props;
+    const { core } = palette;
 
-  return `
+    return `
   background-color: ${core.primary};
   color: ${core.contrast};
   width: 100%;
@@ -17,6 +17,6 @@ ${ props => {
   &:hover {
     filter: brightness(85%);
   }
-  `
-}}
+  `;
+  }}
 `;
