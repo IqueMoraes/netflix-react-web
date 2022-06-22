@@ -4,6 +4,7 @@ import { reducers } from './user.reducer';
 
 const initialState: User = {
   data: {},
+  error: '',
 };
 
 const userSlice = createSlice({
@@ -12,4 +13,4 @@ const userSlice = createSlice({
   initialState,
 });
 
-export default userSlice;
+export { initialState, userSlice };

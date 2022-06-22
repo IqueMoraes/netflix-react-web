@@ -12,8 +12,8 @@ import Input from 'components/input/input';
 import { authenticated } from 'store/user/user.selector';
 import { userSlice } from 'store/user/user.slice';
 import { Error } from 'types/yup.type';
-import { loginSchema } from './login.schema';
-import { Wrapper } from './login.styled';
+import { loginSchema } from './new-user.schema';
+import { Wrapper } from '../login/login.styled';
 
 function Form() {
   const [data, setData] = useState({
@@ -54,7 +54,7 @@ function Form() {
   return (
     <Wrapper container justifyContent="center" alignContent="center">
       <Grid item xs={2}>
-        <h1 style={{ color: 'red', textAlign: 'center' }}>NETFLIX</h1>
+        <h1 style={{ color: 'red', textAlign: 'center' }}>Novo usário:</h1>
         <Input
           type="email"
           name="email"
@@ -67,7 +67,13 @@ function Form() {
           placeholder="Senha"
           onChange={handleChange}
         />
-        <Button onClick={handleSend}>Entrar</Button>
+        <Input
+          type="password"
+          name="password"
+          placeholder="Confirmação de senha"
+          onChange={handleChange}
+        />
+        <Button onClick={handleSend}>Criar usuário</Button>
         <FormError message={error} />
       </Grid>
     </Wrapper>
