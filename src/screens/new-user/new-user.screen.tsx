@@ -1,29 +1,27 @@
 import React, {
   useCallback,
-  useEffect,
   useState,
   ChangeEvent,
 } from 'react';
 import { Grid } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Button from 'components/button/button';
 import FormError from 'components/form-error/form-error';
 import Input from 'components/input/input';
-import { authenticated } from 'store/user/user.selector';
 import { userSlice } from 'store/user/user.slice';
 import { Error } from 'types/yup.type';
-import { loginSchema } from './new-user.schema';
+import { createUserSchema } from './new-user.schema';
 import { Wrapper } from '../login/login.styled';
 
 function Form() {
   const [data, setData] = useState({
     email: '',
     password: '',
+    repeatPassword: '',
   });
   const [error, setError] = useState('');
 
   const dispatch = useDispatch();
-  const userAuthenticated = useSelector(authenticated);
 
   const handleChange = useCallback(
     ({ target }: ChangeEvent<HTMLInputElement>) => {
@@ -38,18 +36,13 @@ function Form() {
 
   const handleSend = useCallback(async () => {
     try {
-      await loginSchema.validate(data);
+      await createUserSchema.validate(data);
 
-      dispatch(userSlice.actions.authentication(data));
+      dispatch(userSlice.actions.creationUser(data));
     } catch (yupError: unknown) {
       setError((yupError as Error).errors[0]);
     }
   }, [data]);
-
-  useEffect(() => {
-    // eslint-disable-next-line padded-blocks
-    console.log(userAuthenticated);
-  }, [userAuthenticated]);
 
   return (
     <Wrapper container justifyContent="center" alignContent="center">
@@ -69,7 +62,7 @@ function Form() {
         />
         <Input
           type="password"
-          name="password"
+          name="repeatPassword"
           placeholder="Confirmação de senha"
           onChange={handleChange}
         />

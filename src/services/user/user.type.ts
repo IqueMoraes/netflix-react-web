@@ -20,3 +20,7 @@ export enum AuthErrorMessage {
   UNREACHABLE_AUTHENTICATION = 'An error occurred on authentication proccess',
   UNREACHABLE_CREATION_USER = 'An error occurred on signinup user',
 }
+
+export const ErrorMessageEnum = {
+  Unauthorized: 'An error occurred on authentication proccess',
+};
