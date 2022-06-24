@@ -1,15 +1,26 @@
 import showsService from 'services/shows/shows.service';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { showsSlice, initialState } from 'store/shows/shows.slice';
-import { PayloadAction } from '@reduxjs/toolkit';
-import { ShowsResponse } from 'services/shows/shows.type';
+import {
+  MoviesList, ShowCategory,
+  ShowsResponse, TvShowsList,
+} from 'services/shows/shows.type';
 
-function* loadAllShows(action: PayloadAction<undefined>) {
+function* loadAllShows() {
   try {
-    const response:ShowsResponse = yield call(showsService().allShowslist, action.payload);
+    const response:ShowsResponse = yield call(showsService().allShowslist);
 
-    yield put(showsSlice.actions.setMovies(response));
-    yield put(showsSlice.actions.setTvShows(response));
+    const moviesList = response
+      .data
+      .filter((show) => show.category === ShowCategory.MOVIE) as MoviesList;
+
+    const tvShowsList = response
+      .data
+      .filter((show) => show.category === ShowCategory.TV_SHOWS) as TvShowsList;
+
+    yield put(showsSlice.actions.setShows(response.data));
+    yield put(showsSlice.actions.setMovies(moviesList));
+    yield put(showsSlice.actions.setTvShows(tvShowsList));
     yield put(showsSlice.actions.setError(initialState.error));
   } catch (e) {
     // @ts-ignore

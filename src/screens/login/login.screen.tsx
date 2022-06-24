@@ -26,7 +26,6 @@ function Form() {
   const navigate = useNavigate();
   const from = useLocation();
   const token = useSelector(tokenSelector);
-  const userError = useSelector(errorSelector);
 
   const handleChange = useCallback(
     ({ target }: ChangeEvent<HTMLInputElement>) => {
@@ -84,7 +83,7 @@ function Form() {
           onChange={handleChange}
         />
         <Button onClick={handleSend}>Entrar</Button>
-        <FormError message={error || userError} />
+        <FormError message={error} />
         <Link to="/signup">
           <CreateAccount>Criar uma conta</CreateAccount>
         </Link>
