@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-const loginSchema = yup.object().shape({
+const createUserSchema = yup.object().shape({
   email: yup
     .string()
     .email('Insira um e-mail válido.')
@@ -11,4 +11,4 @@ const loginSchema = yup.object().shape({
   repeatPassword: yup.string().required().oneOf([yup.ref('password'), null], 'Passwords must match'),
 });
 
-export { loginSchema };
+export { createUserSchema };

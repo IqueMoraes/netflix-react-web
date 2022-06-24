@@ -1,19 +1,19 @@
 import React, {
-  useCallback,
-  useEffect,
-  useState,
-  ChangeEvent,
+  useCallback, useState, ChangeEvent, useEffect,
 } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Grid } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from 'components/button/button';
 import FormError from 'components/form-error/form-error';
 import Input from 'components/input/input';
-import { authenticated } from 'store/user/user.selector';
 import { userSlice } from 'store/user/user.slice';
 import { Error } from 'types/yup.type';
+import { MOVIES_LIST_URL } from 'screens/movies-list/movies-list.types';
+import { USER_TOKE_COOKIE } from 'store/user/user.type';
+import { tokenSelector } from 'store/user/user.selector';
+import { CreateAccount, Wrapper } from './login.styled';
 import { loginSchema } from './login.schema';
-import { Wrapper } from './login.styled';
 
 function Form() {
   const [data, setData] = useState({
@@ -23,7 +23,9 @@ function Form() {
   const [error, setError] = useState('');
 
   const dispatch = useDispatch();
-  const userAuthenticated = useSelector(authenticated);
+  const navigate = useNavigate();
+  const from = useLocation();
+  const token = useSelector(tokenSelector);
 
   const handleChange = useCallback(
     ({ target }: ChangeEvent<HTMLInputElement>) => {
@@ -47,9 +49,22 @@ function Form() {
   }, [data]);
 
   useEffect(() => {
-    // eslint-disable-next-line padded-blocks
-    console.log(userAuthenticated);
-  }, [userAuthenticated]);
+    if (token) {
+      navigate(MOVIES_LIST_URL, {
+        state: { from },
+      });
+    }
+  }, [token]);
+
+  useEffect(() => {
+    const localToken = localStorage.getItem(USER_TOKE_COOKIE);
+
+    if (localToken) {
+      dispatch(userSlice.actions.setData({
+        token: localToken,
+      }));
+    }
+  }, []);
 
   return (
     <Wrapper container justifyContent="center" alignContent="center">
@@ -69,6 +84,9 @@ function Form() {
         />
         <Button onClick={handleSend}>Entrar</Button>
         <FormError message={error} />
+        <Link to="/signup">
+          <CreateAccount>Criar uma conta</CreateAccount>
+        </Link>
       </Grid>
     </Wrapper>
   );
