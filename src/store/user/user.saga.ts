@@ -33,9 +33,9 @@ function* createUser(action: PayloadAction<SignUpPayload>) {
   }
 }
 
-function* userSaga() {
-  yield takeLatest('user/authentication', authentication);
-  yield takeLatest('user/creationUser', createUser);
-}
+const userSaga = [
+  takeLatest('user/authentication', authentication),
+  takeLatest('user/creationUser', createUser),
+];
 
 export default userSaga;

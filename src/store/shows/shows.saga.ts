@@ -30,8 +30,8 @@ function* loadAllShows() {
   }
 }
 
-function* showsSaga() {
-  yield takeLatest('shows/activateList', loadAllShows);
-}
+const showsSaga = [
+  takeLatest('shows/activateList', loadAllShows),
+];
 
 export default showsSaga;
