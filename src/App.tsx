@@ -7,9 +7,9 @@ import { GlobalStyles } from './themes/main/global-style';
 import theme from './themes/main/theme';
 import Login from './screens/login/login.screen';
 import SignUp from './screens/new-user/new-user.screen';
-import MoviesList from './screens/movies-list/movies-list.screen';
+import ShowsList from './screens/shows-list/shows-list.screen';
 import { LOGIN_URL } from './screens/login/login.types';
-import { MOVIES_LIST_URL } from './screens/movies-list/movies-list.types';
+import { MOVIES_LIST_URL } from './screens/shows-list/shows-list.types';
 import { SIGNUP_URL } from './screens/new-user/new-user.types';
 
 function App() {
@@ -21,7 +21,11 @@ function App() {
           <Route element={<Login />} path={LOGIN_URL} />
           <Route element={<SignUp />} path={SIGNUP_URL} />
           <Route
-            element={<Guard><MoviesList /></Guard>}
+            element={(
+              <Guard>
+                <ShowsList />
+              </Guard>
+  )}
             path={MOVIES_LIST_URL}
           />
         </Routes>

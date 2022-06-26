@@ -1,5 +1,8 @@
 import React, {
-  useCallback, useState, ChangeEvent, useEffect,
+  useCallback,
+  useState,
+  ChangeEvent,
+  useEffect,
 } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Grid } from '@mui/material';
@@ -9,7 +12,7 @@ import FormError from 'components/form-error/form-error';
 import Input from 'components/input/input';
 import { userSlice } from 'store/user/user.slice';
 import { Error } from 'types/yup.type';
-import { MOVIES_LIST_URL } from 'screens/movies-list/movies-list.types';
+import { MOVIES_LIST_URL } from 'screens/shows-list/shows-list.types';
 import { USER_TOKE_COOKIE } from 'store/user/user.type';
 import { tokenSelector } from 'store/user/user.selector';
 import { CreateAccount, Wrapper } from './login.styled';
@@ -60,9 +63,11 @@ function Form() {
     const localToken = localStorage.getItem(USER_TOKE_COOKIE);
 
     if (localToken) {
-      dispatch(userSlice.actions.setData({
-        token: localToken,
-      }));
+      dispatch(
+        userSlice.actions.setData({
+          token: localToken,
+        }),
+      );
     }
   }, []);
 

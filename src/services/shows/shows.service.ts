@@ -1,26 +1,42 @@
 import axiosInstance from 'modules/axios/axios.module';
-import { useSelector } from 'react-redux';
-import { tokenSelector } from 'store/user/user.selector';
-// import { ShowsData } from './shows.type';
+import { Props, ShowIdPayload } from './shows.type';
 
-const showsService = () => {
-  const allShowslist = () => axiosInstance
-    .get('/shows', {
-      headers: {
-        Authorization: `Bearer ${useSelector(tokenSelector)}`,
+const showsService = ({ token }: Props) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const showslist = () => axiosInstance
+    .get('/shows', config);
+
+  const showDetail = (showId: ShowIdPayload) => axiosInstance
+    .get(`/shows/${showId.showId}`, config);
+
+  const myList = () => axiosInstance
+    .get('/list', config);
+
+  const addShowToMyList = (showId: ShowIdPayload) => axiosInstance
+    .post('/list', {
+      ...config,
+      data: {
+        showId: `${showId}`,
       },
     });
 
-  const showDetail = (showId: string) => axiosInstance
-    .get(`/shows/${showId}`, {
-      headers: {
-        Authorization: `Bearer ${useSelector(tokenSelector)}`,
-      },
-    });
+  const removeShowFromMyList = (payload: ShowIdPayload) => {
+    console.log('SHow id', payload.showId);
+    return axiosInstance
+      .delete(`/list/${payload.showId}`, config);
+  };
 
   return {
-    allShowslist,
+    showslist,
     showDetail,
+    myList,
+    addShowToMyList,
+    removeShowFromMyList,
   };
 };
 
