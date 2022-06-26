@@ -1,22 +1,27 @@
 import { PayloadAction } from '@reduxjs/toolkit';
-import {
-  MoviesList, Show, TvShowsList,
-} from 'services/shows/shows.type';
-import { Shows } from './shows.type';
-// import { Shows } from './shows.type';
+import { Show } from 'services/shows/shows.type';
+import { List, ShowId, Shows } from './shows.type';
 
 const activateList = (_state: any, _action: PayloadAction<undefined>) => {};
 
-const setShows = (state: Shows, action: PayloadAction<Show[]>) => {
-  state.data.showsList = action.payload;
+const activateMyList = (_state: any, _action: PayloadAction<undefined>) => {};
+
+const activateShowDetail = (_state: any, _action: PayloadAction<ShowId>) => {};
+
+const setList = (state: Shows, action: PayloadAction<List>) => {
+  state.data.list = action.payload;
 };
 
-const setMovies = (state: Shows, action: PayloadAction<MoviesList>) => {
-  state.data.movies = action.payload;
+const setMyList = (state: Shows, action: PayloadAction<Show[]>) => {
+  state.data.myList = action.payload;
 };
 
-const setTvShows = (state: Shows, action: PayloadAction<TvShowsList>) => {
-  state.data.tvShows = action.payload;
+const setShowDetail = (state: Shows, action: PayloadAction<Show>) => {
+  state.data.showDetail = action.payload;
+};
+
+const setLoading = (state: Shows, action: PayloadAction<boolean>) => {
+  state.settings.loading = action.payload;
 };
 
 const setError = (state: Shows, action: PayloadAction<Shows['error']>) => {
@@ -25,9 +30,12 @@ const setError = (state: Shows, action: PayloadAction<Shows['error']>) => {
 
 const reducers = {
   activateList,
-  setShows,
-  setMovies,
-  setTvShows,
+  activateMyList,
+  activateShowDetail,
+  setList,
+  setMyList,
+  setShowDetail,
+  setLoading,
   setError,
 };
 

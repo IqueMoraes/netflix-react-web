@@ -1,7 +1,9 @@
 import { Store } from 'store/store/store.type';
 
-export const showsSelector = (state: Store) => state.shows.data.showsList;
+export const listSelector = (state: Store) => state.shows.data.list;
 
-export const moviesSelector = (state: Store) => state.shows.data.movies;
+export const myListSelector = (state: Store) => state.shows.data.myList;
 
-export const tvShowsSelector = (state: Store) => state.shows.data.tvShows;
+export const showDetailSelector = (state: Store) => state.shows.data.showDetail;
+
+export const loadingSelector = (state: Store) => state.shows.settings.loading;

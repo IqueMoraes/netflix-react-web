@@ -1,7 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import { all } from 'redux-saga/effects';
-import epsiodesSaga from 'store/episodes/episodes.saga';
 import showsSaga from 'store/shows/shows.saga';
 import { showsSlice } from 'store/shows/shows.slice';
 import userSaga from 'store/user/user.saga';
@@ -23,7 +22,6 @@ function* storeSaga() {
   yield all([
     ...userSaga,
     ...showsSaga,
-    ...epsiodesSaga,
   ]);
 }
 

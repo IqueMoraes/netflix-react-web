@@ -1,4 +1,4 @@
-import { Episodes } from 'store/episodes/episodes.type';
+import { Episodes } from 'services/shows/shows.type';
 import { Shows } from 'store/shows/shows.type';
 import { User } from 'store/user/user.type';
 

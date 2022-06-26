@@ -1,8 +1,4 @@
-import React, {
-  useCallback,
-  useState,
-  ChangeEvent,
-} from 'react';
+import React, { useCallback, useState, ChangeEvent } from 'react';
 import { Grid } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import Button from 'components/button/button';

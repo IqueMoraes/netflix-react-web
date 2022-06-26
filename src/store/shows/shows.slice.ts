@@ -4,9 +4,12 @@ import { Shows } from './shows.type';
 
 const initialState: Shows = {
   data: {
-    showsList: [],
-    movies: [],
-    tvShows: [],
+    myList: [],
+    list: {},
+    showDetail: {},
+  },
+  settings: {
+    loading: false,
   },
   error: '',
 };
