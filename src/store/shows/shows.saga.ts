@@ -75,7 +75,7 @@ function* loadMyShows() {
 
   try {
     const response: ShowsResponse = yield call(
-      showsService({ token }).showslist,
+      showsService({ token }).myList,
     );
 
     yield put(setMyList(response.data));

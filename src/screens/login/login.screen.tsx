@@ -15,6 +15,7 @@ import { Error } from 'types/yup.type';
 import { MOVIES_LIST_URL } from 'screens/shows-list/shows-list.types';
 import { USER_TOKE_COOKIE } from 'store/user/user.type';
 import { tokenSelector } from 'store/user/user.selector';
+import NetflixLogo from 'components/netflix-logo/netflix-logo';
 import { CreateAccount, Wrapper } from './login.styled';
 import { loginSchema } from './login.schema';
 
@@ -74,7 +75,7 @@ function Form() {
   return (
     <Wrapper container justifyContent="center" alignContent="center">
       <Grid item xs={2}>
-        <h1 style={{ color: 'red', textAlign: 'center' }}>NETFLIX</h1>
+        <NetflixLogo width="auto" height="100px" />
         <Input
           type="email"
           name="email"

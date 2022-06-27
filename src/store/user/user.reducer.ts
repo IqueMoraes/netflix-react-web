@@ -14,11 +14,14 @@ const setError = (state: User, action: PayloadAction<User['error']>) => {
 
 const creationUser = (_state: User, _action: PayloadAction<SignUpPayload>) => {};
 
+const logOff = (_state: User, _action: PayloadAction<undefined>) => {};
+
 const reducers = {
   setData,
   setError,
   authentication,
   creationUser,
+  logOff,
 };
 
 export { reducers };

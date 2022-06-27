@@ -25,11 +25,8 @@ const showsService = ({ token }: Props) => {
       },
     });
 
-  const removeShowFromMyList = (payload: ShowIdPayload) => {
-    console.log('SHow id', payload.showId);
-    return axiosInstance
-      .delete(`/list/${payload.showId}`, config);
-  };
+  const removeShowFromMyList = (payload: ShowIdPayload) => axiosInstance
+    .delete(`/list/${payload.showId}`, config);
 
   return {
     showslist,
