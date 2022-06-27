@@ -2,6 +2,8 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import Guard from 'components/guard/guard';
+import OneSingleShow from 'screens/show/show.screen';
+import { SHOW_URL } from 'screens/show/show.type';
 import { GlobalStyles } from './themes/main/global-style';
 
 import theme from './themes/main/theme';
@@ -27,6 +29,14 @@ function App() {
               </Guard>
   )}
             path={MOVIES_LIST_URL}
+          />
+          <Route
+            element={(
+              <Guard>
+                <OneSingleShow />
+              </Guard>
+            )}
+            path={SHOW_URL}
           />
         </Routes>
       </ThemeProvider>

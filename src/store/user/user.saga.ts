@@ -33,9 +33,16 @@ function* createUser(action: PayloadAction<SignUpPayload>) {
   }
 }
 
+function* logOff() {
+  const { data } = userSlice.getInitialState();
+  yield put(userSlice.actions.setData(data));
+  localStorage.removeItem(USER_TOKE_COOKIE);
+}
+
 const userSaga = [
   takeLatest('user/authentication', authentication),
   takeLatest('user/creationUser', createUser),
+  takeLatest('user/logOff', logOff),
 ];
 
 export default userSaga;
